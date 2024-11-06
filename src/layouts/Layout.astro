@@ -221,5 +221,58 @@ h1 {
     fill: white;
     transform: scale(1.2);
 }
+/* From Uiverse.io by Praashoo7 */ 
+.radio-input {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
 
+.radio-input input {
+  appearance: none;
+  width: 2em;
+  height: 2em;
+  background-color: #171717;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+  border-radius: 5px;
+  transition: .4s ease-in-out;
+}
+
+.radio-input input:hover {
+  scale: 1.2;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.radio-input .plus1 {
+  position: relative;
+  top: 0.01em;
+  left: -1.45em;
+  width: 1.3em;
+  height: 0.2em;
+  background-color: rgb(191, 0, 255);
+  rotate: 45deg;
+  scale: 0;
+  border-radius: 5px;
+  transition: .4s ease-in-out;
+}
+
+.radio-input .plus2 {
+  position: relative;
+  width: 1.3em;
+  height: 0.2em;
+  background-color: rgb(191, 0, 255);
+  transform: rotate(90deg);
+  border-radius: 5px;
+  transition: .4s ease-in-out;
+}
+
+.radio-input input:checked {
+  box-shadow: none;
+}
+
+.radio-input input:checked + .plus1 {
+  transform: rotate(180deg);
+  scale: 1;
+}
 </style>

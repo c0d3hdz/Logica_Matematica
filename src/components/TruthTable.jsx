@@ -23,7 +23,7 @@ const evaluateExpression = (expr, context) => {
         return 'Error'
     }
 }
-
+//mejor solucion que encotre para que sirva en el servidor
 const generateTruthTable = (expression, useBoolean) => {
     const variables = extractVariables(expression)
 
@@ -78,17 +78,39 @@ const TruthTableGenerator = () => {
                     name="text"
                     className="input"
                 />
-                <label className="label">Expresión Booleana:</label>
+                <label className="label text-gradient ">Expresión Booleana:</label>
             </div>
             <br />
-            <label>
-                Mostrar como True/False:
-                <input type="radio" checked={useBoolean === true} onChange={() => setUseBoolean(true)} />
-                True/False
-                <input type="radio" checked={useBoolean === false} onChange={() => setUseBoolean(false)} />
-                1/0
-            </label>
-            <br />
+            <div class="radio-input">
+                <label className=" text-gradient ">True/False </label> <br />
+                <input
+                    value="value-1"
+                    name="value-radio"
+                    id="value-1"
+                    type="radio"
+                    checked={useBoolean === true}
+                    onChange={() => setUseBoolean(true)}
+                />
+                <div class="plus1">
+                    <div class="plus2"></div>
+                </div>
+                <label className="text-gradient ">0/1 </label> <br />
+                <input
+                    value="value-2"
+                    name="value-radio"
+                    id="value-2"
+                    type="radio"
+                    checked={useBoolean === false}
+                    onChange={() => setUseBoolean(false)}
+                />
+                <div class="plus1">
+                    <div class="plus2"></div>
+                </div>
+                <div class="plus1">
+                    <div class="plus2"></div>
+                </div>
+            </div>
+            <br /> <br /> <br />
             <button onClick={handleGenerateTable} className="btn">
                 <svg
                     height="24"
@@ -103,7 +125,6 @@ const TruthTableGenerator = () => {
                 </svg>
                 <span className="text"> Generar Tabla</span>
             </button>
-
             <h3>Tabla de Verdad</h3>
             {table.rows && (
                 <table>
