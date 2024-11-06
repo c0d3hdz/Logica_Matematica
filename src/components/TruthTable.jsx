@@ -17,7 +17,8 @@ const processExpression = expr => {
 const evaluateExpression = (expr, context) => {
     const processedExpr = processExpression(expr)
     try {
-        return eval(processedExpr)
+        const func = new Function('context', `with (context) { return ${processedExpr} }`)
+        return func(context)
     } catch (error) {
         return 'Error'
     }
@@ -67,7 +68,7 @@ const TruthTableGenerator = () => {
     }
 
     return (
-        <div className=''>
+        <div className="">
             <h2>Generador de Tabla de Verdad</h2>
             <div className="container">
                 <input
