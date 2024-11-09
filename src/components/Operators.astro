@@ -1,0 +1,102 @@
+---
+const operators = [
+  {
+    name: "Negación (NOT / !)",
+    syntax: ["NOT(A1)", "!A1"],
+    description: "Invierte el valor de verdad de una variable. Si A1 es verdadero, NOT(A1) es falso.",
+    isSupported: true,
+  },
+  {
+    name: "Conjunción (AND / &&)",
+    syntax: ["A1 AND B2", "A1 && B2"],
+    description: "Evalúa como verdadero solo si ambas variables son verdaderas.",
+    isSupported: true,
+  },
+  {
+    name: "Disyunción (OR / ||)",
+    syntax: ["A1 OR B2", "A1 || B2"],
+    description: "Evalúa como verdadero si al menos una de las variables es verdadera.",
+    isSupported: true,
+  },
+  {
+    name: "Disyunción Exclusiva (XOR)",
+    syntax: ["A1 != B2"],
+    description: "Evalúa como verdadero si solo una de las dos variables es verdadera, pero no ambas. Puede ser simulado en JavaScript como A1 != B2.",
+    isSupported: true,
+  },
+  {
+    name: "Condicional (IMPLIES)",
+    syntax: ["!A1 || B2"],
+    description: "Evalúa como verdadero si A es falso o si B es verdadero (puede representarse como !A1 || B2).",
+    isSupported: true,
+  },
+  {
+    name: "Bicondicional (IFF / EQUIV)",
+    syntax: [ "A1 === B2"],
+    description: "Evalúa como verdadero si ambas variables tienen el mismo valor de verdad. Puede representarse como A1 === B2.",
+    isSupported: true,
+  },
+  {
+    name: "NAND",
+    syntax: ["A NAND B"],
+    description: "Evalúa como verdadero si no ambas variables son verdaderas. Requiere configuración adicional (!A1 || !B2) para emularlo en JavaScript.",
+    isSupported: false,
+  },
+  {
+    name: "NOR",
+    syntax: ["A NOR B"],
+    description: "Evalúa como verdadero si ninguna de las variables es verdadera. Puede ser emulado con !A1 && !B2 en JavaScript, pero requiere configuración adicional.",
+    isSupported: false,
+  },
+  {
+    name: "Cuantificadores (∀, ∃)",
+    syntax: ["∀", "∃"],
+    description: "No son compatibles ya que requieren lógica de primer orden y evaluación de predicados en contexto.",
+    isSupported: false,
+  },
+];
+---
+
+<section>
+  <h2>Información de Operadores</h2>
+  <p>La aplicación permite el uso de ciertos operadores lógicos para generar tablas de verdad. Aquí están los detalles:</p>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Operador</th>
+        <th>Sintaxis</th>
+        <th>Descripción</th>
+        <th class="Support">Compatibilidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      {operators.map((op) => (
+        <tr>
+          <td>{op.name}</td>
+          <td>{op.syntax.join(", ")}</td>
+          <td>{op.description}</td>
+          <td class="Support">{op.isSupported ? "✔" : "❌"}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</section>
+<style>
+    table{
+        width: 100%;
+        font-size: medium;
+        border: solid 5px;
+        border-color:   rgb(191, 0, 255);
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 400%;
+        background-position: 0%;
+    }
+    @media (max-width: 1250px) {
+        .Support {
+            display: none;
+        }
+    }
+</style>

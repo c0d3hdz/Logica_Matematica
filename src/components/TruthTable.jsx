@@ -31,10 +31,9 @@ const generateTruthTable = (expression, useBoolean) => {
         alert('No se encontraron variables en la expresión.')
         return []
     }
-
     const rows = []
     const totalRows = Math.pow(2, variables.length)
-
+    // por estudiar este funcionamiento
     for (let i = 0; i < totalRows; i++) {
         const row = []
         for (let j = 0; j < variables.length; j++) {
@@ -81,7 +80,7 @@ const TruthTableGenerator = () => {
                 <label className="label text-gradient ">Expresión Booleana:</label>
             </div>
             <br />
-            <div class="radio-input">
+            <div className="radio-input">
                 <label className=" text-gradient ">True/False </label> <br />
                 <input
                     value="value-1"
@@ -91,8 +90,8 @@ const TruthTableGenerator = () => {
                     checked={useBoolean === true}
                     onChange={() => setUseBoolean(true)}
                 />
-                <div class="plus1">
-                    <div class="plus2"></div>
+                <div className="plus1">
+                    <div className="plus2"></div>
                 </div>
                 <label className="text-gradient ">0/1 </label> <br />
                 <input
@@ -103,11 +102,11 @@ const TruthTableGenerator = () => {
                     checked={useBoolean === false}
                     onChange={() => setUseBoolean(false)}
                 />
-                <div class="plus1">
-                    <div class="plus2"></div>
+                <div className="plus1">
+                    <div className="plus2"></div>
                 </div>
-                <div class="plus1">
-                    <div class="plus2"></div>
+                <div className="plus1">
+                    <div className="plus2"></div>
                 </div>
             </div>
             <br /> <br /> <br />
@@ -126,36 +125,42 @@ const TruthTableGenerator = () => {
                 <span className="text"> Generar Tabla</span>
             </button>
             <h3>Tabla de Verdad</h3>
-            {table.rows && (
-                <table>
-                    <thead>
-                        <tr>
-                            {table.variables.map((variable, i) => (
-                                <th key={i}>{variable}</th>
-                            ))}
-                            <th>Resultado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {table.rows.map((row, index) => (
-                            <tr key={index}>
-                                {row.slice(0, -1).map((cell, i) => (
-                                    <td key={i}>{useBoolean ? (cell ? 'True' : 'False') : cell === 1 ? '1' : '0'}</td>
+            <p className="instructions ">
+                <strong>{expression}</strong>
+            </p>
+            <div style={{ width: '100%', overflow: 'auto' }}>
+                {table.rows && (
+                    <table>
+                        <thead>
+                            <tr>
+                                {table.variables.map((variable, i) => (
+                                    <th key={i}>{variable}</th>
                                 ))}
-                                <td>
-                                    {useBoolean
-                                        ? row[row.length - 1]
-                                            ? 'True'
-                                            : 'False'
-                                        : row[row.length - 1] === 1
-                                          ? '1'
-                                          : '0'}
-                                </td>
+                                <th>Resultado</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            )}
+                        </thead>
+                        <tbody>
+                            {table.rows.map((row, index) => (
+                                <tr key={index}>
+                                    {row.slice(0, -1).map((cell, i) => (
+                                        //ahora se verifica con cell ? '1' : '0' si useBoolean es false, y cell ? 'True' : 'False' si useBoolean es true.
+                                        <td key={i}>{useBoolean ? (cell ? 'True' : 'False') : cell ? '1' : '0'}</td>
+                                    ))}
+                                    <td>
+                                        {useBoolean
+                                            ? row[row.length - 1]
+                                                ? 'True'
+                                                : 'False'
+                                            : row[row.length - 1]
+                                              ? '1'
+                                              : '0'}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
+            </div>
         </div>
     )
 }

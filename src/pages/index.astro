@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import TruthTable from '../components/TruthTable'
+import Operators from '../components/Operators.astro';
 ---
 
 <Layout title="Logica Matematica.">
@@ -20,7 +21,9 @@ import TruthTable from '../components/TruthTable'
 			<li>Ejemplo de entrada válida: <strong>A1 && (B2 OR C3)</strong></li>
 			</ul>
 		</div>
-		<TruthTable client:load/>
+		<TruthTable client:only/>
+
+		<Operators/>
 	</main>
 </Layout>
 
