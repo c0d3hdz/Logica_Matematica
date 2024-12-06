@@ -67,7 +67,7 @@ const TruthTableGenerator = () => {
     }
 
     return (
-        <div className="">
+        <div className="Container_main">
             <h2>Generador de Tabla de Verdad</h2>
             <div className="container">
                 <input
@@ -144,7 +144,7 @@ const TruthTableGenerator = () => {
                                 <tr key={index}>
                                     {row.slice(0, -1).map((cell, i) => (
                                         //ahora se verifica con cell ? '1' : '0' si useBoolean es false, y cell ? 'True' : 'False' si useBoolean es true.
-                                        <td key={i}>{useBoolean ? (cell ? 'True' : 'False') : cell ? '1' : '0'}</td>
+                                        <td key={i}>{useBoolean ? (cell ? 'True' : 'False') : cell ? '1' : '0'} </td>
                                     ))}
                                     <td>
                                         {useBoolean
